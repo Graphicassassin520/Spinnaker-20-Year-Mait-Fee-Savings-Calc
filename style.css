@@ -1,0 +1,71 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f4f7f6;
+}
+
+h2, #savings, .breakdown-header {
+    text-align: center;
+}
+
+.breakdown-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"], input[type="number"], button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    #myChart, #financialTable, .breakdown-header, #printChart {
+        visibility: visible;
+    }
+    #myChart, #financialTable {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    .breakdown-header {
+        position: absolute;
+        top: 100px;
+        width: 100%;
+    }
+    #printChart {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    input[type="text"], input[type="number"], button {
+        font-size: 16px; /* Larger font sizes for mobile devices */
+    }
+}
