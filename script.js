@@ -7,17 +7,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function calculateProjection() {
     const guestName = document.getElementById('guestName').value;
-    const companyName = document.getElementById('companyName').value || 'Current Ownership Company';
+    const companyName = document.getElementById('companyName').value || 'Current Ownership Location';
     const maintenanceFee = parseFloat(document.getElementById('maintenanceFee').value) || 0;
     const maintenanceFee2 = parseFloat(document.getElementById('maintenanceFee2').value) || 0;
     const priceIncrease = parseFloat(document.getElementById('priceIncrease').value) / 100 || 0;
-
+    
     let data = [], data2 = [], labels = [], savingsData = [], totalSavings = 0;
     let fee1 = maintenanceFee, fee2 = maintenanceFee2;
 
-    for (let year = 1; year <= 20; year++) {
+    for (let year = 1; year <= 15; year++) {
         fee1 *= (1 + priceIncrease);
-        fee2 *= (1 + priceIncrease);
+        fee2 *= (1 + 0.02);  // Increase by 2% per year
         data.push(fee1);
         data2.push(fee2);
         labels.push(`Year ${year}`);
@@ -40,7 +40,7 @@ function calculateProjection() {
                 borderColor: 'red',
                 fill: false,
             }, {
-                label: 'Spinnaker',
+                label: 'New Ownership',
                 data: data2,
                 borderColor: 'green',
                 fill: false,
@@ -60,12 +60,12 @@ function calculateProjection() {
         }
     });
 
-    let tableHtml = '<table><tr><th>Year</th><th>' + companyName + ' Fee ($)</th><th>Spinnaker Fee ($)</th><th>Savings ($)</th></tr>';
+    let tableHtml = '<table><tr><th>Year</th><th>' + companyName + ' Fee ($)</th><th>New Ownership Fee ($)</th><th>Savings ($)</th></tr>';
     data.forEach((amount, index) => {
         tableHtml += `<tr><td>${index + 1}</td><td>${amount.toFixed(2)}</td><td>${data2[index].toFixed(2)}</td><td>${savingsData[index].toFixed(2)}</td></tr>`;
     });
-    tableHtml += `<tr><td colspan="3">Total Savings over 20 Years:</td><td>${totalSavings.toFixed(2)}</td></tr></table>`;
+    tableHtml += `<tr><td colspan="3">Total Savings over 15 Years:</td><td>${totalSavings.toFixed(2)}</td></tr></table>`;
     document.getElementById('financialTable').innerHTML = tableHtml;
 
-    document.getElementById('savings').innerHTML = `20-Year Savings with Spinnaker: $${Math.abs(totalSavings).toFixed(2)}`;
+    document.getElementById('savings').innerHTML = `15-Year Savings with New Ownership: $${Math.abs(totalSavings).toFixed(2)}`;
 }
