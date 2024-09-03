@@ -7,8 +7,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function calculateProjection() {
     const guestName = document.getElementById('guestName').value;
-    const companyName = document.getElementById('companyName').value || 'Current Ownership Location';
+    const currentLocationName = document.getElementById('companyName').value || 'Current Ownership Location';
     const maintenanceFee = parseFloat(document.getElementById('maintenanceFee').value) || 0;
+    const newLocationName = document.getElementById('newLocationName').value || 'New Ownership Location';
     const maintenanceFee2 = parseFloat(document.getElementById('maintenanceFee2').value) || 0;
     const priceIncrease = parseFloat(document.getElementById('priceIncrease').value) / 100 || 0;
     
@@ -35,12 +36,12 @@ function calculateProjection() {
         data: {
             labels: labels,
             datasets: [{
-                label: companyName,
+                label: currentLocationName,
                 data: data,
                 borderColor: 'red',
                 fill: false,
             }, {
-                label: 'New Ownership',
+                label: newLocationName,
                 data: data2,
                 borderColor: 'green',
                 fill: false,
@@ -60,7 +61,7 @@ function calculateProjection() {
         }
     });
 
-    let tableHtml = '<table><tr><th>Year</th><th>' + companyName + ' Fee ($)</th><th>New Ownership Fee ($)</th><th>Savings ($)</th></tr>';
+    let tableHtml = `<table><tr><th>Year</th><th>${currentLocationName} Fee ($)</th><th>${newLocationName} Fee ($)</th><th>Savings ($)</th></tr>`;
     data.forEach((amount, index) => {
         tableHtml += `<tr><td>${index + 1}</td><td>${amount.toFixed(2)}</td><td>${data2[index].toFixed(2)}</td><td>${savingsData[index].toFixed(2)}</td></tr>`;
     });
