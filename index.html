@@ -17,8 +17,14 @@
 </div>
 
 <div class="form-group">
-    <label for="companyName">Current Ownership Location:</label>
-    <input type="text" id="companyName" placeholder="Enter ownership location">
+    <label for="currentLocation">Current Ownership Location:</label>
+    <select id="currentLocation">
+        <option value="Ormond Beach South Tower">Ormond Beach South Tower</option>
+        <option value="Ormond Beach North Tower">Ormond Beach North Tower</option>
+        <option value="Branson">Branson</option>
+        <option value="Hilton Head">Hilton Head</option>
+        <option value="Williamsburg">Williamsburg</option>
+    </select>
 </div>
 
 <div class="form-group">
@@ -27,8 +33,14 @@
 </div>
 
 <div class="form-group">
-    <label for="newLocationName">New Ownership Location:</label>
-    <input type="text" id="newLocationName" placeholder="Enter new ownership location">
+    <label for="newLocation">New Ownership Location:</label>
+    <select id="newLocation">
+        <option value="Ormond Beach South Tower">Ormond Beach South Tower</option>
+        <option value="Ormond Beach North Tower">Ormond Beach North Tower</option>
+        <option value="Branson">Branson</option>
+        <option value="Hilton Head">Hilton Head</option>
+        <option value="Williamsburg">Williamsburg</option>
+    </select>
 </div>
 
 <div class="form-group">
@@ -38,20 +50,21 @@
 
 <div class="form-group">
     <label for="priceIncrease">Current Location Increase %:</label>
-    <!-- Changed default value from 5 to 12 -->
     <input type="number" id="priceIncrease" value="12" step="0.01">
 </div>
 
 <button id="calculate">Calculate 15-Year Projection</button>
 
-<div id="results"></div>
-<div id="chartContainer">
-    <canvas id="myChart"></canvas>
+<div id="results" class="results-container">
+    <h3 class="results-header">Projection Results</h3>
+    <div id="chartContainer">
+        <canvas id="myChart"></canvas>
+    </div>
+    <div class="gap"></div>
+    <h3 class="breakdown-header">15 Year Breakdown and Savings with New Ownership</h3>
+    <div id="financialTable"></div>
+    <div id="savings" class="savings-highlight"></div>
 </div>
-<div class="gap"></div>
-<h3 class="breakdown-header">15 Year Breakdown and Savings with New Ownership</h3>
-<div id="financialTable"></div>
-<div id="savings"></div>
 
 <button id="printChart">Print Graph</button>
 
