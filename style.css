@@ -1,17 +1,19 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     padding: 20px;
-    background-color: #f4f7f6;
+    background-color: #f0f2f5;
 }
 
 h2, #savings, .breakdown-header {
     text-align: center;
+    color: #333;
 }
 
-.breakdown-header {
+.breakdown-header, .results-header {
     font-size: 24px;
     font-weight: bold;
     margin-top: 30px;
+    color: #333;
 }
 
 .form-group {
@@ -21,25 +23,71 @@ h2, #savings, .breakdown-header {
 label {
     display: block;
     margin-bottom: 5px;
+    font-weight: bold;
+    color: #444;
 }
 
-input[type="text"], input[type="number"], button {
+input[type="text"], input[type="number"], select, button {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: #28a745;
     color: white;
     border: none;
     cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #218838;
+}
+
+.results-container {
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+.savings-highlight {
+    font-size: 18px;
+    font-weight: bold;
+    color: #d9534f;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.results-table th, .results-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.results-table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+}
+
+.results-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.results-table tr:hover {
+    background-color: #f1f1f1;
 }
 
 @media print {
@@ -65,7 +113,7 @@ button:hover {
 }
 
 @media (max-width: 768px) {
-    input[type="text"], input[type="number"], button {
+    input[type="text"], input[type="number"], select, button {
         font-size: 16px; /* Larger font sizes for mobile devices */
     }
 }
