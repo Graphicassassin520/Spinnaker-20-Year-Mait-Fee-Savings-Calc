@@ -6,15 +6,15 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function calculateProjection() {
-    // Retrieve input values
+    // Retrieve user input values
     const guestName = document.getElementById('guestName').value;
-    const currentLocationName = document.getElementById('currentLocation').value;
+    const currentLocationName = document.getElementById('currentLocation').value.trim();
     const maintenanceFee = parseFloat(document.getElementById('maintenanceFee').value) || 0;
-    const newLocationName = document.getElementById('newLocation').value;
+    const newLocationName = document.getElementById('newLocation').value.trim();
     const maintenanceFee2 = parseFloat(document.getElementById('maintenanceFee2').value) || 0;
     const priceIncrease = (parseFloat(document.getElementById('priceIncrease').value) || 0) / 100;
 
-    // Arrays for chart data and table breakdown
+    // Arrays for chart data and savings
     let data = [], data2 = [], labels = [], savingsData = [];
     let totalSavings = 0;
     let fee1 = maintenanceFee, fee2 = maintenanceFee2;
@@ -31,11 +31,11 @@ function calculateProjection() {
         totalSavings += annualSavings;
     }
 
-    // Get canvas and resize for printing
+    // Get canvas and resize (reduce to 81% of original size)
     const canvas = document.getElementById('myChart');
     const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth * 0.9; 
-    canvas.height = window.innerHeight * 0.4; // 40% of screen height for better printing
+    canvas.width = window.innerWidth * 0.81; 
+    canvas.height = window.innerHeight * 0.32;  // Reduced height for printing
 
     // Destroy previous chart if exists
     if (window.myChart instanceof Chart) {
@@ -48,7 +48,7 @@ function calculateProjection() {
         data: {
             labels: labels,
             datasets: [{
-                label: currentLocationName,
+                label: currentLocationName || "Current Location",
                 data: data,
                 borderColor: '#FF6384',
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
@@ -57,7 +57,7 @@ function calculateProjection() {
                 tension: 0.4,
             },
             {
-                label: newLocationName,
+                label: newLocationName || "New Location",
                 data: data2,
                 borderColor: '#36A2EB',
                 backgroundColor: 'rgba(54, 162, 235, 0.2)',
@@ -105,8 +105,8 @@ function calculateProjection() {
     // Build the financial breakdown table dynamically
     let tableHtml = `<table class="results-table"><tr>
                      <th>Year</th>
-                     <th>${currentLocationName} Fee ($)</th>
-                     <th>${newLocationName} Fee ($)</th>
+                     <th>${currentLocationName || "Current Location"} Fee ($)</th>
+                     <th>${newLocationName || "New Location"} Fee ($)</th>
                      <th>Savings ($)</th>
                    </tr>`;
     data.forEach((amount, index) => {
@@ -128,7 +128,7 @@ function calculateProjection() {
         `20-Year Savings with New Ownership: <strong>$${formatNumberWithCommas(Math.abs(totalSavings))}</strong>`;
 }
 
-// Helper function to format numbers with commas and two decimals
+// Helper function to format numbers with commas
 function formatNumberWithCommas(number) {
     return number.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
