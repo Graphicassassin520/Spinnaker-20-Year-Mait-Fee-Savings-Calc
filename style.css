@@ -1,155 +1,118 @@
 /* Base Styling */
 body {
-  font-family: Arial, sans-serif;
-  padding: 20px;
-  background-color: #f0f2f5;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f0f2f5;
 }
 
 h2, #savings, .breakdown-header {
-  text-align: center;
-  color: #333;
-}
-
-.breakdown-header, .results-header {
-  font-size: 24px;
-  font-weight: bold;
-  margin-top: 30px;
-  color: #333;
+    text-align: center;
+    color: #333;
 }
 
 /* Form Elements */
 .form-group {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-  color: #444;
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #444;
 }
 
 input[type="text"],
 input[type="number"],
 select,
 button {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 /* Button Styles */
 button {
-  background-color: #28a745;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
 }
 
 button:hover {
-  background-color: #218838;
+    background-color: #218838;
 }
 
-/* Results Container and Table Styling */
+/* Results Container */
 .results-container {
-  padding: 20px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-top: 30px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
 }
 
 .savings-highlight {
-  font-size: 18px;
-  font-weight: bold;
-  color: #d9534f;
-  text-align: center;
-  margin-top: 20px;
-}
-
-.results-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-.results-table th,
-.results-table td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: center;
-}
-
-.results-table th {
-  background-color: #f8f9fa;
-  font-weight: bold;
-}
-
-.results-table tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-.results-table tr:hover {
-  background-color: #f1f1f1;
+    font-size: 18px;
+    font-weight: bold;
+    color: #d9534f;
+    text-align: center;
+    margin-top: 20px;
 }
 
 /* Print Styles */
 @media print {
-  /* Hide interactive form elements and buttons */
-  .form-group,
-  button {
-    display: none;
-  }
-  
-  /* Remove body padding/margins for printing */
-  body {
-    padding: 0;
-    margin: 0;
-  }
-  
-  /* Use full viewport height for results */
-  #results {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* Top half: Chart Container */
-  #chartContainer {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50vh;
-  }
-  
-  /* Bottom half: Financial Table, Breakdown Header, and Savings */
-  #financialTable,
-  .breakdown-header,
-  #savings {
-    flex: 1;
-    overflow: auto;
-    height: 50vh;
-  }
-  
-  /* Reset any positioning */
-  #chartContainer,
-  #financialTable,
-  .breakdown-header,
-  #savings {
-    position: static;
-  }
-  
-  /* Ensure canvas scales properly */
-  canvas {
-    max-width: 100% !important;
-    max-height: 100% !important;
-  }
+    /* Hide form elements and buttons */
+    .form-group, button {
+        display: none;
+    }
+
+    /* Use full page for printing */
+    body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100vh;
+    }
+
+    /* Structure the print layout */
+    #results {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 100vh; /* Use the entire page */
+        width: 100%;
+        page-break-inside: avoid; /* Prevent page breaks */
+    }
+
+    /* Chart: Takes the top half of the page */
+    #chartContainer {
+        width: 100%;
+        height: 45vh; /* 45% of the page */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    canvas {
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    /* Table: Takes the bottom half of the page */
+    #financialTable {
+        width: 100%;
+        height: 45vh;
+        overflow: hidden;
+    }
+
+    /* Hide print button */
+    #printChart {
+        display: none;
+    }
 }
