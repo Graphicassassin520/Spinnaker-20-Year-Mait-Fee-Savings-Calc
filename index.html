@@ -1,73 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
-    <title>Maintenance Fee Calculator</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maintenance Fee Calculator</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Include Chart.js from CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
-<h2>Maintenance Fee Calculator</h2>
+  <h2>Maintenance Fee Calculator</h2>
 
-<div class="form-group">
+  <!-- Input Form -->
+  <div class="form-group">
     <label for="guestName">Guest Name:</label>
     <input type="text" id="guestName" placeholder="Enter guest name">
-</div>
+  </div>
 
-<div class="form-group">
+  <div class="form-group">
     <label for="currentLocation">Current Ownership Location:</label>
     <select id="currentLocation">
-        <option value="Ormond Beach South Tower">Ormond Beach South Tower</option>
-        <option value="Ormond Beach North Tower">Ormond Beach North Tower</option>
-        <option value="Branson">Branson</option>
-        <option value="Hilton Head">Hilton Head</option>
-        <option value="Williamsburg">Williamsburg</option>
+      <option value="Ormond Beach South Tower">Ormond Beach South Tower</option>
+      <option value="Ormond Beach North Tower">Ormond Beach North Tower</option>
+      <option value="Branson">Branson</option>
+      <option value="Hilton Head">Hilton Head</option>
+      <option value="Williamsburg">Williamsburg</option>
     </select>
-</div>
+  </div>
 
-<div class="form-group">
+  <div class="form-group">
     <label for="maintenanceFee">Current Maintenance Fee:</label>
     <input type="number" id="maintenanceFee" value="0">
-</div>
+  </div>
 
-<div class="form-group">
+  <div class="form-group">
     <label for="newLocation">New Ownership Location:</label>
     <select id="newLocation">
-        <option value="Ormond Beach South Tower">Ormond Beach South Tower</option>
-        <option value="Ormond Beach North Tower">Ormond Beach North Tower</option>
-        <option value="Branson">Branson</option>
-        <option value="Hilton Head">Hilton Head</option>
-        <option value="Williamsburg">Williamsburg</option>
+      <option value="Ormond Beach South Tower">Ormond Beach South Tower</option>
+      <option value="Ormond Beach North Tower">Ormond Beach North Tower</option>
+      <option value="Branson">Branson</option>
+      <option value="Hilton Head">Hilton Head</option>
+      <option value="Williamsburg">Williamsburg</option>
     </select>
-</div>
+  </div>
 
-<div class="form-group">
+  <div class="form-group">
     <label for="maintenanceFee2">New Ownership Maintenance Fee:</label>
     <input type="number" id="maintenanceFee2" value="0">
-</div>
+  </div>
 
-<div class="form-group">
+  <div class="form-group">
     <label for="priceIncrease">Current Location Increase %:</label>
     <input type="number" id="priceIncrease" value="12" step="0.01">
-</div>
+  </div>
 
-<button id="calculate">Calculate 15-Year Projection</button>
+  <!-- Action Buttons -->
+  <button id="calculate">Calculate 20-Year Projection</button>
+  <button id="printChart">Print Chart & Breakdown</button>
 
-<div id="results" class="results-container">
+  <!-- Results Container -->
+  <div id="results" class="results-container">
     <h3 class="results-header">Projection Results</h3>
     <div id="chartContainer">
-        <canvas id="myChart"></canvas>
+      <canvas id="myChart"></canvas>
     </div>
     <div class="gap"></div>
-    <h3 class="breakdown-header">15 Year Breakdown and Savings with New Ownership</h3>
+    <h3 class="breakdown-header">20-Year Breakdown and Savings with New Ownership</h3>
     <div id="financialTable"></div>
     <div id="savings" class="savings-highlight"></div>
-</div>
+  </div>
 
-<button id="printChart">Print Graph</button>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
